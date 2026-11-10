@@ -9,6 +9,7 @@
 //    aciklama  : kartın altındaki kısa yazı
 //    gorsel    : images/ klasöründeki arka plan fotoğrafı (yatay). Dosya yoksa
 //                kart düz renkli görünür.
+//    gruplar   : kategori içindeki bölümler. Birden fazlaysa sayfada sekme olur.
 //
 //  Ürün alanları (ad dışında hepsi isteğe bağlı)
 //    ad        : ürün adı
@@ -19,19 +20,13 @@
 //    besin     : besin değerleri, ör. { "Kalori": "320 kcal", "Protein": "30 g" }
 //    alerjen   : ör. ["Süt", "Gluten"]
 //    etiket    : ör. ["Popüler", "Yeni"]
-//    oneCikan  : true ise ana sayfadaki "Öne Çıkanlar" şeridinde görünür
-//    ornek     : true ise UYDURMA ÖRNEK üründür (aşağıdaki anahtara bakın)
+//    oneCikan  : true ise ana sayfadaki "Öne çıkanlar" şeridinde görünür
 //
 window.KAFE = {
   ad: "Uğur Kafe",
   // Ana sayfada başlığın altında görünen kısa yazı. Boş bırakılırsa görünmez.
   slogan: "",
   paraBirimi: "₺",
-
-  // Tasarımı dolu göstermek için eklenen ÖRNEK ürünler (ornek: true olanlar)
-  // bu anahtar true iken görünür. Yayına çıkmadan önce gerçek ürünleri girip
-  // bunu false yapın ya da örnekleri silin.
-  ornekleriGoster: true,
 
   // Boş bırakılan satır menüde hiç görünmez.
   bilgi: {
@@ -44,120 +39,107 @@ window.KAFE = {
 
   kategoriler: [
     {
-      ad: "İçecekler",
-      aciklama: "Shake, kahve ve soğuk içecekler",
-      gorsel: "kat-icecekler.jpg",
+      ad: "Meyve Suları",
+      aciklama: "Taze sıkılmış",
+      gorsel: "kat-meyve-sulari.jpg",
       gruplar: [
         {
-          ad: "Protein",
+          ad: "Meyve Suları",
           urunler: [
-            {
-              ad: "Protein Shake",
-              aciklama: "Antrenman sonrası toparlanma için.",
-              fiyat: null,
-              gorsel: "protein-shake.jpg",
-              // ÖRNEK VERİ: içerik ve değerler gerçek tarifle değiştirilecek.
-              icerik: ["Whey protein (1 ölçek)", "Süt", "Muz"],
-              besin: { "Kalori": "320 kcal", "Protein": "30 g", "Karbonhidrat": "35 g", "Yağ": "6 g" },
-              alerjen: ["Süt"],
-              etiket: ["Popüler"],
-              oneCikan: true,
-            },
+            { ad: "Portakal Suyu", aciklama: "Taze sıkılmış portakal", fiyat: null, gorsel: "portakal-suyu.jpg", oneCikan: true },
+            { ad: "Nar Suyu", aciklama: "Taze sıkılmış nar", fiyat: null, gorsel: "nar-suyu.jpg" },
+            { ad: "Mandalina Suyu", aciklama: "Taze sıkılmış mandalina", fiyat: null, gorsel: "mandalina-suyu.jpg" },
           ],
         },
+      ],
+    },
+
+    {
+      ad: "Fitness & Protein",
+      aciklama: "Antrenman öncesi ve sonrası",
+      gorsel: "kat-fitness-protein.jpg",
+      gruplar: [
+        {
+          ad: "Fitness & Protein",
+          urunler: [
+            { ad: "Protein Shake", aciklama: "Antrenman sonrası protein içeceği", fiyat: null, gorsel: "protein-shake.jpg", oneCikan: true },
+            { ad: "L-Carnitine Shot", aciklama: "", fiyat: null, gorsel: "l-carnitine-shot.jpg" },
+            { ad: "Pre-Workout Shot", aciklama: "", fiyat: null, gorsel: "pre-workout-shot.jpg" },
+          ],
+        },
+      ],
+    },
+
+    {
+      ad: "Kahveler",
+      aciklama: "Sıcak ve soğuk",
+      gorsel: "kat-kahveler.jpg",
+      gruplar: [
         {
           ad: "Sıcak",
           urunler: [
-            { ad: "Kahve", aciklama: "Taze demlenmiş.", fiyat: null, gorsel: "kahve.jpg", oneCikan: true },
+            { ad: "Espresso", aciklama: "", fiyat: null, gorsel: "espresso.jpg" },
+            { ad: "Americano", aciklama: "", fiyat: null, gorsel: "americano.jpg" },
+            { ad: "Latte", aciklama: "", fiyat: null, gorsel: "latte.jpg", oneCikan: true },
+            { ad: "Türk Kahvesi", aciklama: "", fiyat: null, gorsel: "turk-kahvesi.jpg" },
           ],
         },
         {
           ad: "Soğuk",
           urunler: [
-            { ad: "Portakal Suyu", aciklama: "", fiyat: null, gorsel: "portakal-suyu.jpg", oneCikan: true },
-            { ad: "Küçük Su", aciklama: "0,5 L", fiyat: null, gorsel: "kucuk-su.jpg" },
-            { ad: "Büyük Su", aciklama: "1,5 L", fiyat: null, gorsel: "buyuk-su.jpg" },
+            { ad: "Ice Americano", aciklama: "", fiyat: null, gorsel: "ice-americano.jpg" },
+            { ad: "Ice Latte", aciklama: "", fiyat: null, gorsel: "ice-latte.jpg" },
           ],
         },
       ],
     },
 
     {
-      ad: "Yemekler",
-      aciklama: "Doyurucu, dengeli öğünler",
-      gorsel: "kat-yemekler.jpg",
+      ad: "Özel İçecekler",
+      aciklama: "Churchill, muzlu süt, atom",
+      gorsel: "kat-ozel-icecekler.jpg",
       gruplar: [
         {
-          ad: "Tost & Sandviç",
+          ad: "Özel İçecekler",
           urunler: [
-            {
-              ornek: true,
-              ad: "Kaşarlı Tost", gorsel: "kasarli-tost.jpg",
-              aciklama: "Tam buğday ekmeğinde.",
-              fiyat: 120,
-              icerik: ["Tam buğday ekmeği", "Kaşar peyniri"],
-              alerjen: ["Gluten", "Süt"],
-            },
-            {
-              ornek: true,
-              ad: "Tavuklu Sandviç", gorsel: "tavuklu-sandvic.jpg",
-              aciklama: "Izgara tavuk, yeşillik ve yoğurt sos.",
-              fiyat: 190,
-              icerik: ["Izgara tavuk göğsü", "Tam buğday ekmeği", "Marul", "Domates", "Yoğurt sos"],
-              besin: { "Kalori": "420 kcal", "Protein": "34 g", "Karbonhidrat": "38 g", "Yağ": "12 g" },
-              alerjen: ["Gluten", "Süt"],
-              etiket: ["Yüksek Protein"],
-              oneCikan: true,
-            },
-          ],
-        },
-        {
-          ad: "Kâseler",
-          urunler: [
-            {
-              ornek: true,
-              ad: "Tavuklu Pilav Kâsesi", gorsel: "tavuklu-pilav-kasesi.jpg",
-              aciklama: "Izgara tavuk, pirinç pilavı ve haşlanmış sebze.",
-              fiyat: 240,
-              icerik: ["Izgara tavuk göğsü", "Pirinç pilavı", "Brokoli", "Havuç"],
-              besin: { "Kalori": "540 kcal", "Protein": "42 g", "Karbonhidrat": "60 g", "Yağ": "11 g" },
-              etiket: ["Yüksek Protein"],
-            },
-            {
-              ornek: true,
-              ad: "Yulaf Kâsesi", gorsel: "yulaf-kasesi.jpg",
-              aciklama: "Yulaf, yoğurt, muz ve bal.",
-              fiyat: 160,
-              icerik: ["Yulaf", "Yoğurt", "Muz", "Bal", "Ceviz"],
-              alerjen: ["Gluten", "Süt", "Kuruyemiş"],
-              etiket: ["Yeni"],
-            },
+            { ad: "Churchill", aciklama: "Soda, limon ve tuz", fiyat: null, gorsel: "churchill.jpg" },
+            { ad: "Muzlu Süt", aciklama: "", fiyat: null, gorsel: "muzlu-sut.jpg" },
+            { ad: "Atom", aciklama: "Muz, süt ve enerji veren ek malzemeler", fiyat: null, gorsel: "atom.jpg", oneCikan: true },
           ],
         },
       ],
     },
 
     {
-      ad: "Atıştırmalıklar",
-      aciklama: "Antrenman arası hızlı enerji",
-      gorsel: "kat-atistirmaliklar.jpg",
+      ad: "Bitki Çayları",
+      aciklama: "Papatya, ıhlamur, ada çayı, kuşburnu",
+      gorsel: "kat-bitki-caylari.jpg",
       gruplar: [
         {
-          ad: "Atıştırmalıklar",
+          ad: "Bitki Çayları",
           urunler: [
-            {
-              ornek: true,
-              ad: "Protein Bar", gorsel: "protein-bar.jpg",
-              aciklama: "Çikolatalı.",
-              fiyat: 90,
-              besin: { "Kalori": "210 kcal", "Protein": "20 g", "Karbonhidrat": "18 g", "Yağ": "7 g" },
-              alerjen: ["Süt", "Soya"],
-              etiket: ["Yüksek Protein"],
-              oneCikan: true,
-            },
-            { ornek: true, ad: "Kuruyemiş Kâsesi", gorsel: "kuruyemis-kasesi.jpg", aciklama: "Badem, fındık ve ceviz.", fiyat: 110, alerjen: ["Kuruyemiş"] },
-            { ornek: true, ad: "Muz", gorsel: "muz.jpg", aciklama: "Tek adet.", fiyat: 25 },
-            { ornek: true, ad: "Protein Kurabiye", gorsel: "protein-kurabiye.jpg", aciklama: "Yulaflı, damla çikolatalı.", fiyat: 80, alerjen: ["Gluten", "Süt"], etiket: ["Yeni"] },
+            { ad: "Papatya Çayı", aciklama: "", fiyat: null, gorsel: "papatya-cayi.jpg" },
+            { ad: "Ihlamur Çayı", aciklama: "", fiyat: null, gorsel: "ihlamur-cayi.jpg" },
+            { ad: "Ada Çayı", aciklama: "", fiyat: null, gorsel: "ada-cayi.jpg" },
+            { ad: "Kuşburnu Çayı", aciklama: "", fiyat: null, gorsel: "kusburnu-cayi.jpg" },
+          ],
+        },
+      ],
+    },
+
+    {
+      ad: "Soğuk İçecekler",
+      aciklama: "Enerji içeceği, soda ve su",
+      gorsel: "kat-soguk-icecekler.jpg",
+      gruplar: [
+        {
+          ad: "Soğuk İçecekler",
+          urunler: [
+            { ad: "Red Bull Sugarfree", aciklama: "", fiyat: null, gorsel: "red-bull-sugarfree.jpg" },
+            { ad: "Monster Ultra White", aciklama: "", fiyat: null, gorsel: "monster-ultra-white.jpg" },
+            { ad: "Beypazarı Soda", aciklama: "", fiyat: null, gorsel: "beypazari-soda.jpg" },
+            { ad: "Büyük Su", aciklama: "", fiyat: null, gorsel: "buyuk-su.jpg" },
+            { ad: "Küçük Su", aciklama: "", fiyat: null, gorsel: "kucuk-su.jpg" },
           ],
         },
       ],

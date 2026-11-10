@@ -171,9 +171,13 @@
     ev.appendChild(gir(el("h1", "manset", "ne alırsınız?")));
     if (K.slogan) ev.appendChild(gir(el("p", "slogan", K.slogan)));
 
-    var katlar = el("div", "katlar");
-    KATLAR.forEach(function (k) {
+    // Kategori çoksa ilk kart tam genişlikte, diğerleri ikişerli dizilir;
+    // sonda tek kalan kart da tam genişliğe yayılır.
+    var cok = KATLAR.length > 4;
+    var katlar = el("div", "katlar" + (cok ? " cok" : ""));
+    KATLAR.forEach(function (k, n) {
       var kart = katKart(k);
+      if (cok && (n === 0 || (n === KATLAR.length - 1 && KATLAR.length % 2 === 0))) kart.a.classList.add("genis");
       gir(kart.a);
       katlar.appendChild(kart.a);
       kartlar[k.id] = kart.art;
