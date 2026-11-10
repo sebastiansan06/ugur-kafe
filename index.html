@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141210">
+<meta name="color-scheme" content="dark">
+<title>Menü</title>
+<link rel="preload" href="fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Açılış (oturum başına bir kez) -->
+<div class="acilis" id="acilis" aria-hidden="true">
+  <div>
+    <div class="acilis-ad" id="acilis-ad"></div>
+    <div class="acilis-alt">menü</div>
+  </div>
+</div>
+
+<!-- Kategori sayfasında aşağı kaydırınca beliren üst çubuk -->
+<div class="ustbar" id="ustbar"></div>
+
+<main id="ev" class="gorunum"></main>
+<main id="kat" class="gorunum" hidden></main>
+
+<!-- Arama -->
+<div class="ara" id="ara" hidden role="dialog" aria-modal="true" aria-label="Menüde ara">
+  <div class="ara-bas">
+    <label class="ara-kutu">
+      <span id="ara-ikon"></span>
+      <input id="ara-giris" type="search" inputmode="search" enterkeyhint="search"
+             autocomplete="off" autocorrect="off" spellcheck="false" placeholder="Menüde ara">
+    </label>
+    <button class="ara-vazgec" id="ara-vazgec" type="button">Vazgeç</button>
+  </div>
+  <div class="ara-govde" id="ara-govde"></div>
+</div>
+
+<!-- Ürün detayı -->
+<div class="sayfa" id="sayfa" hidden role="dialog" aria-modal="true" aria-labelledby="sayfa-ad">
+  <div class="sayfa-perde" id="sayfa-perde"></div>
+  <div class="sayfa-panel" id="sayfa-panel">
+    <div class="sayfa-tut" id="sayfa-tut">
+      <span class="tutamak"></span>
+      <div id="sayfa-medya"></div>
+    </div>
+    <button class="yuvarlak sayfa-kapat" id="sayfa-kapat" type="button" aria-label="Kapat"></button>
+    <div class="sayfa-govde" id="sayfa-govde"></div>
+  </div>
+</div>
+
+<script src="menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
